@@ -1,0 +1,6 @@
+#!/bin/bash
+
+/root/bin/firewall/nix_netfilter.sh
+iptables-save > /etc/iptables/iptables-up.rules
+/root/bin/firewall/nix_netfilter_ipv6.sh
+ip6tables-save > /etc/iptables/ip6tables-up.rules
