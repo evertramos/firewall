@@ -122,12 +122,12 @@ $IPTABLES -A tcp_packets -p TCP -s 0/0 --dport 443 -j allowed
 #$IPTABLES -A tcp_packets -p TCP -s 0/0 --dport 113 -j allowed
 
 # Mysql para ip
-#$IPTABLES -A tcp_packets -p TCP -s 191.176.114.228 --dport 3306 -j allowed
-#$IPTABLES -A tcp_packets -p TCP -s 200.202.168.254 --dport 3306 -j allowed
+#$IPTABLES -A tcp_packets -p TCP -s 192.0.2.1 --dport 3306 -j allowed
+#$IPTABLES -A tcp_packets -p TCP -s 192.0.2.2 --dport 3306 -j allowed
 
-#$IPTABLES -A INPUT -p tcp -s 200.202.168.254 --sport 1024:65535 -d $INET_IP --dport 3306 -m state --state NEW,ESTABLISHED -j ACCEPT
-#$IPTABLES -A tcp_packets -p tcp -s 200.202.168.254 --sport 1024:65535 -d $INET_IP --dport 3306 -m state --state NEW,ESTABLISHED -j ACCEPT
-#$IPTABLES -A tcp_packets -p tcp -s 191.176.114.228 --sport 1024:65535 -d $INET_IP --dport 3306 -m state --state NEW,ESTABLISHED -j ACCEPT
+#$IPTABLES -A INPUT -p tcp -s 192.0.2.2 --sport 1024:65535 -d $INET_IP --dport 3306 -m state --state NEW,ESTABLISHED -j ACCEPT
+#$IPTABLES -A tcp_packets -p tcp -s 192.0.2.2 --sport 1024:65535 -d $INET_IP --dport 3306 -m state --state NEW,ESTABLISHED -j ACCEPT
+#$IPTABLES -A tcp_packets -p tcp -s 192.0.2.1 --sport 1024:65535 -d $INET_IP --dport 3306 -m state --state NEW,ESTABLISHED -j ACCEPT
 
 # UDP ports
 #$IPTABLES -A udp_packets -p UDP -s 0/0 --destination-port 53 -j ACCEPT
@@ -200,9 +200,9 @@ $IPTABLES -A OUTPUT -p tcp --sport 465 -j ACCEPT
 $IPTABLES -A OUTPUT -p tcp --sport 587 -j ACCEPT
 
 # Mysql OUTPUT rules
-#$IPTABLES -A OUTPUT -p tcp --sport 3306 -d 200.202.168.254 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
-#$IPTABLES -A OUTPUT -p tcp --sport 3306 -d 191.176.114.228 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
-#$IPTABLES -A OUTPUT -p tcp -s $INET_IP --sport 3306 -d 200.202.168.254 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
+#$IPTABLES -A OUTPUT -p tcp --sport 3306 -d 192.0.2.2 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
+#$IPTABLES -A OUTPUT -p tcp --sport 3306 -d 192.0.2.1 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
+#$IPTABLES -A OUTPUT -p tcp -s $INET_IP --sport 3306 -d 192.0.2.2 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
 
 
 # Special OUTPUT rules to decide which IP's to allow
